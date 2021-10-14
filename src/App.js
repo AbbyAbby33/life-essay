@@ -8,16 +8,16 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
-        <Header className="header">
-          <div>生活小事</div>
+        <Header className="le-header">
+          <h1>生活小事</h1>
         </Header>
         <Content>
           <Layout className="site-layout-background">
-            <Sider>
-              <Menu style={{ height: 'calc(100vh - 64px)' }}>
+            <Sider collapsible={true} collapsedWidth={0} breakpoint="lg">
+              <Menu className="le-menu">
               </Menu>
             </Sider>
-            <Content style={{ padding: '24px', minHeight: 280 }}>Content</Content>
+            <Content className="le-main-content">Content</Content>
           </Layout>
         </Content>
       </Layout>
