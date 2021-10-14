@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.less';
 /** Ant Design */
 import { Layout, Menu } from 'antd';
 import { BookOutlined, AreaChartOutlined, MailOutlined } from '@ant-design/icons';
