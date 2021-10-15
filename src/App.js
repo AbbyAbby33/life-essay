@@ -72,7 +72,7 @@ export default class App extends Component {
               <Route path="/statistics-analysis" component={StatisticsAnalysis} />
               <Route path="/technical-resources" component={TechnicalResources} />
               <Route path="/contact-developer" component={ContactDeveloper} />
-              <Redirect to="/create-esssay" />
+              {/* <Redirect to="/create-esssay" /> */}
             </Content>
           </Layout>
         </Content>
