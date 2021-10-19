@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.less';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
+import { ConfigProvider } from 'antd';
+import zh_TW from 'antd/lib/locale-provider/zh_TW';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <ConfigProvider locale={zh_TW}>
+        <App />
+      </ConfigProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

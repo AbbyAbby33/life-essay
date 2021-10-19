@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { PageHeader } from 'antd';
 import { Calendar, Badge } from 'antd';
-import moment from 'moment'
 
 export default class EssayCalendar extends Component {
 
     getListData(value) {
-        console.log('value', value);
-        console.log('moment', moment('2021-09-21 12:00:00'));
+        // console.log('value', value);
+        // console.log('moment', moment('2021-09-21 12:00:00'));
 
         let listData;
         switch (value.date()) {
@@ -51,6 +50,10 @@ export default class EssayCalendar extends Component {
                 ))}
             </ul>
         );
+    }
+
+    onChange = (date, dateString) => {
+        console.log(date, dateString);
     }
 
     render() {
