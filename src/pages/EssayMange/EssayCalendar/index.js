@@ -3,6 +3,7 @@ import { PageHeader } from 'antd';
 import { Calendar } from 'antd';
 import moment from 'moment';
 import 'moment/locale/zh-tw';
+import './index.less'
 
 export default class EssayCalendar extends Component {
     state = {
@@ -121,6 +122,27 @@ export default class EssayCalendar extends Component {
         );
     }
 
+    getMonthData(value) {
+        const cellMonth = moment(value).get('month');
+        const cellEssayList = this.state.data.filter(v => {
+            const essayMonth = moment(v.date).get('month');
+            return cellMonth === essayMonth;
+        });
+        console.log('cellEssayList', cellEssayList);
+        return cellEssayList.length;
+    }
+
+    monthCellRender = (value) => {
+        console.log('value', value);
+        const num = this.getMonthData(value);
+        console.log('num', num);
+        return num ? (
+            <div className="notes-month">
+                <span>{num} 件小事</span>
+            </div>
+        ) : null;
+    }
+
     render() {
         return (
             <div>
@@ -130,7 +152,7 @@ export default class EssayCalendar extends Component {
                     subTitle="使用日曆視覺化顯示小事"
                     backIcon={false}
                 />
-                <Calendar dateCellRender={this.dateCellRender} />
+                <Calendar dateCellRender={this.dateCellRender} monthCellRender={this.monthCellRender} />
             </div>
         )
     }
