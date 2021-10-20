@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'moment/locale/zh-tw';
 import './index.less'
 import { SmileTwoTone, StarTwoTone } from '@ant-design/icons';
+import EssayModal from '../../../components/EssayModal';
 
 export default class EssayCalendar extends Component {
     state = {
@@ -131,7 +132,7 @@ export default class EssayCalendar extends Component {
 
     /** 顯示跳窗 */
     setModalVisible(visible) {
-        // console.log('顯示跳窗visible', visible);
+        console.log('顯示跳窗visible', visible);
         this.setState({ essayModalVisible: visible });
         if (!visible) {
             this.setState({ essayDetail: {} });
@@ -188,7 +189,7 @@ export default class EssayCalendar extends Component {
                     backIcon={false}
                 />
                 <Calendar dateCellRender={this.dateCellRender} monthCellRender={this.monthCellRender} />
-                <Modal
+                {/* <Modal
                     title={`小事詳細記事：${this.state.essayDetail.title}`}
                     centered
                     width={900}
@@ -209,7 +210,12 @@ export default class EssayCalendar extends Component {
                             <p>內文：詳細文章內容詳細文章內容詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容</p>
                         </div>
                     </div>
-                </Modal>
+                </Modal> */}
+                <EssayModal
+                    essayModalVisible={this.state.essayModalVisible}
+                    essayDetail={this.state.essayDetail}
+                    setModalVisible={(event) => this.setModalVisible(event)}
+                />
             </div >
         )
     }
