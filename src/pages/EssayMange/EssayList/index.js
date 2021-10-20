@@ -137,7 +137,7 @@ export default class EssayList extends Component {
         ]
     }
 
-    wrapper = React.createRef();
+    // wrapper = React.createRef();
 
     /** 小事被點擊 */
     essayClick(event, item) {
@@ -166,7 +166,7 @@ export default class EssayList extends Component {
                 />
                 <Table columns={this.state.columns} dataSource={this.state.data} />
                 <EssayModal
-                    ref={this.wrapper}
+                    // ref={this.wrapper}
                     essayModalVisible={this.state.essayModalVisible}
                     essayDetail={this.state.essayDetail}
                     setModalVisible={(event) => this.setModalVisible(event)}
