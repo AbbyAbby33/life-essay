@@ -4,6 +4,7 @@ import { Calendar } from 'antd';
 import moment from 'moment';
 import 'moment/locale/zh-tw';
 import './index.less'
+import { SmileTwoTone, StarTwoTone } from '@ant-design/icons';
 
 export default class EssayCalendar extends Component {
     state = {
@@ -41,7 +42,7 @@ export default class EssayCalendar extends Component {
             {
                 key: '6',
                 title: '煮薑母茶暖暖身子',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-09-08 00:00:00',
             },
             {
@@ -53,7 +54,7 @@ export default class EssayCalendar extends Component {
             {
                 key: '8',
                 title: '到海邊玩耍',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-09-20 00:00:00',
             },
             {
@@ -71,7 +72,7 @@ export default class EssayCalendar extends Component {
             {
                 key: '11',
                 title: '新的開始',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-10-05 00:00:00',
             },
             {
@@ -106,15 +107,22 @@ export default class EssayCalendar extends Component {
         return cellEssayList || [];
     }
 
+    /** 小事被點擊 */
+    essayClick(event, item) {
+        console.log('event', event, 'item', item);
+    }
+
     /** 取得每一格日期要展示的view */
     dateCellRender = (value) => {
         const listData = this.getListData(value);
         // console.log('listData', listData);
         return (
-            <ul className="events">
+            <ul className="date-cell-events">
                 {listData.map(item => (
-                    <li key={item.title}>
+                    <li key={item.title} onClick={($event) => this.essayClick($event, item)}>
                         {/* <Badge status={item.type} text={item.title} /> */}
+                        <SmileTwoTone twoToneColor="#ff6b6b" />&nbsp;
+                        {item.happiness === 5 ? <StarTwoTone twoToneColor="#feca57" /> : null}
                         {item.title}
                     </li>
                 ))}
@@ -122,20 +130,21 @@ export default class EssayCalendar extends Component {
         );
     }
 
+    /** 取得每個月資料件數 */
     getMonthData(value) {
         const cellMonth = moment(value).get('month');
         const cellEssayList = this.state.data.filter(v => {
             const essayMonth = moment(v.date).get('month');
             return cellMonth === essayMonth;
         });
-        console.log('cellEssayList', cellEssayList);
+        // console.log('cellEssayList', cellEssayList);
         return cellEssayList.length;
     }
 
+    /** 取得每一格月份要展示的view */
     monthCellRender = (value) => {
-        console.log('value', value);
+        // console.log('value', value);
         const num = this.getMonthData(value);
-        console.log('num', num);
         return num ? (
             <div className="notes-month">
                 <span>{num} 件小事</span>

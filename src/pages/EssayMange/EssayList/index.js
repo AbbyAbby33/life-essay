@@ -55,7 +55,7 @@ export default class EssayList extends Component {
             {
                 key: '6',
                 title: '煮薑母茶暖暖身子',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-09-08 00:00:00',
             },
             {
@@ -67,7 +67,7 @@ export default class EssayList extends Component {
             {
                 key: '8',
                 title: '到海邊玩耍',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-09-20 00:00:00',
             },
             {
@@ -85,7 +85,7 @@ export default class EssayList extends Component {
             {
                 key: '11',
                 title: '新的開始',
-                happiness: 3,
+                happiness: 5,
                 date: '2021-10-05 00:00:00',
             },
             {
