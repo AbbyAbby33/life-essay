@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Table, PageHeader, Button } from 'antd';
+import { Table, PageHeader, Button, Rate } from 'antd';
 import EssayModal from '../../../components/EssayModal';
+import { HeartFilled } from '@ant-design/icons';
 
 export default class EssayList extends Component {
 
@@ -15,8 +16,11 @@ export default class EssayList extends Component {
             {
                 title: '開心指數',
                 dataIndex: 'happiness',
-                defaultSortOrder: 'descend',
+                // defaultSortOrder: 'descend',
                 sorter: (a, b) => a.happiness - b.happiness,
+                render: (item) => (
+                    <Rate disabled defaultValue={item} character={<HeartFilled/>} style={{color: '#ff6b6b'}}/>
+                ),
             },
             {
                 title: '發生日期',
@@ -30,7 +34,6 @@ export default class EssayList extends Component {
                         <Button type="primary" onClick={($event) => this.essayClick($event, item)}>
                             小事詳情
                         </Button>
-                        {/* <span onClick={($event) => this.essayClick($event, item)}>小事詳情</span> */}
                     </div>
                 ),
             },

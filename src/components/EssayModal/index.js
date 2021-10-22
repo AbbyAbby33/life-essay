@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './index.less';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Rate } from 'antd';
+import { HeartFilled } from '@ant-design/icons';
 
 export default class EssayModal extends Component {
     render() {
@@ -23,7 +24,8 @@ export default class EssayModal extends Component {
                         <img src={`${process.env.PUBLIC_URL}/assets/img/${this.props.essayDetail.img}`} alt="essay-img"></img>
                         <div>
                             <p>時間：{this.props.essayDetail.date}</p>
-                            <p>開心度：{this.props.essayDetail.happiness}</p>
+                            {/* 開心指數：{this.props.essayDetail.happiness} */}
+                            <Rate disabled defaultValue={this.props.essayDetail.happiness} character={<HeartFilled/>} style={{color: '#ff6b6b'}}/>
                             <p>
                                 內文：詳細文章內容詳細文章內容詳細文章內容詳細文章內容詳細文章內容，
                                 詳細文章內容詳細文章內容詳細文章內容，詳細文章內容詳細文章內容詳細文章內容，
