@@ -3,7 +3,7 @@ import { PageHeader, Calendar } from 'antd';
 // import { Modal, Button } from 'antd';
 import moment from 'moment';
 import 'moment/locale/zh-tw';
-import './index.less'
+import './index.less';
 import { SmileTwoTone, StarTwoTone } from '@ant-design/icons';
 import EssayModal from '../../../components/EssayModal';
 
