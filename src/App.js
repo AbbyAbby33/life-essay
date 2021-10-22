@@ -60,7 +60,7 @@ export default class App extends Component {
                                         <Link to="/essay-calendar" />
                                     </Menu.Item>
                                     <Menu.Item key="/random-essay">
-                                        <span>隨機小事</span>
+                                        <span>小事卡片</span>
                                         <Link to="/random-essay" />
                                     </Menu.Item>
                                 </SubMenu>
