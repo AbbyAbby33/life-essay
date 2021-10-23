@@ -23,7 +23,7 @@ export default class EssayModal extends Component {
                     <div className="essay-modal-body">
                         <img src={`${process.env.PUBLIC_URL}/assets/img/${this.props.essayDetail.img}`} alt="essay-img"></img>
                         <div>
-                            <p>時間：{this.props.essayDetail.date}</p>
+                            <p>日期：{this.props.essayDetail.date}</p>
                             {/* 開心指數：{this.props.essayDetail.happiness} */}
                             <Rate disabled defaultValue={this.props.essayDetail.happiness} character={<HeartFilled/>} style={{color: '#ff6b6b'}}/>
                             <p>

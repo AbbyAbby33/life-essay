@@ -14,6 +14,10 @@ export default class EssayList extends Component {
                 dataIndex: 'title'
             },
             {
+                title: '日期',
+                dataIndex: 'date'
+            },
+            {
                 title: '開心指數',
                 dataIndex: 'happiness',
                 // defaultSortOrder: 'descend',
@@ -21,10 +25,6 @@ export default class EssayList extends Component {
                 render: (item) => (
                     <Rate disabled defaultValue={item} character={<HeartFilled/>} style={{color: '#ff6b6b'}}/>
                 ),
-            },
-            {
-                title: '發生日期',
-                dataIndex: 'date'
             },
             {
                 title: '功能',

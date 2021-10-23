@@ -47,9 +47,9 @@ export default class App extends Component {
                             >
                                 {/* <Menu className="le-menu" mode="inline"> */}
                                 <SubMenu key="sub1" icon={<BookOutlined />} title="小事管理">
-                                    <Menu.Item key="/create-esssay">
-                                        <span>新增小事</span>
-                                        <Link to="/create-esssay" />
+                                    <Menu.Item key="/random-essay">
+                                        <span>小事卡片</span>
+                                        <Link to="/random-essay" />
                                     </Menu.Item>
                                     <Menu.Item key="/essay-list">
                                         <span>小事列表</span>
@@ -59,9 +59,9 @@ export default class App extends Component {
                                         <span>小事日曆</span>
                                         <Link to="/essay-calendar" />
                                     </Menu.Item>
-                                    <Menu.Item key="/random-essay">
-                                        <span>小事卡片</span>
-                                        <Link to="/random-essay" />
+                                    <Menu.Item key="/create-esssay">
+                                        <span>新增小事</span>
+                                        <Link to="/create-esssay" />
                                     </Menu.Item>
                                 </SubMenu>
                                 <SubMenu key="sub2" icon={<AreaChartOutlined />} title="統計分析">
@@ -90,6 +90,7 @@ export default class App extends Component {
                             <Route exact path="/statistics-analysis" component={StatisticsAnalysis} />
                             <Route exact path="/technical-resources" component={TechnicalResources} />
                             <Route exact path="/contact-developer" component={ContactDeveloper} />
+                            <Redirect from="/" to="/random-essay" />
                             {/* <Redirect to="/create-esssay" /> */}
                         </Content>
                     </Layout>

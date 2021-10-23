@@ -8,13 +8,11 @@ import { ConfigProvider } from 'antd';
 import zh_TW from 'antd/lib/locale-provider/zh_TW';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <ConfigProvider locale={zh_TW}>
-        <App />
-      </ConfigProvider>
-    </Router>
-  </React.StrictMode>,
+  <Router>
+    <ConfigProvider locale={zh_TW}>
+      <App />
+    </ConfigProvider>
+  </Router>,
   document.getElementById('root')
 );
 
