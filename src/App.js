@@ -34,7 +34,12 @@ export default class App extends Component {
         return (
             <Layout>
                 <Header className="le-header">
-                    <h1>生活小事</h1>
+                    <div className="le-logo-img-wrap">
+                        <img src={`${process.env.PUBLIC_URL}/el-logo.png`} alt="essay-img"></img>
+                    </div>
+                    <h1>
+                        生活小事
+                    </h1>
                 </Header>
                 <Content>
                     <Layout className="site-layout-background">
