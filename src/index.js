@@ -3,25 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.less';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ConfigProvider } from 'antd';
 import zh_TW from 'antd/lib/locale-provider/zh_TW';
-
-// TODO: 路由
 // import { createBrowserHistory } from 'history'
-// const history = createBrowserHistory()
-// console.log(history);
-// history.listen(location => {
-//   console.log(location.pathname)
-// })
+// const history = createBrowserHistory();
 
 ReactDOM.render(
-  <Router>
+  <BrowserRouter>
     <ConfigProvider locale={zh_TW}>
       <App />
       {/* {console.log(history)} */}
     </ConfigProvider>
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

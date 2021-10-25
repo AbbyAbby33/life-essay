@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.less';
 import { BookOutlined, AreaChartOutlined, MailOutlined } from '@ant-design/icons';
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { createBrowserHistory } from 'history'
 
 // 頁面
 import CreateEssay from './pages/EssayMange/CreateEssay';
@@ -19,15 +20,51 @@ const { SubMenu } = Menu;
 
 export default class App extends Component {
 
-    stats = {
-        menuHighlight: '1'
+    state = {
+        openKeys: '',
+        selectedKeys: '',
+        history: createBrowserHistory()
     }
 
-    /** 選單被按 */
+    /** 二級選單被按 */
     menuItemClick = (event) => {
         // console.log('event', event);
         // console.log('window.location', window.location);
-        this.setState({ menuHighlight: event.key });
+        this.setState({
+            openKeys: event.key.split('/')[1],
+            selectedKeys: event.key
+        });
+    }
+
+    /** 一級選單被按 */
+    subMenuItemClick = (event) => {
+        // console.log('this.state', this.state);
+        // console.log('event', event);
+        this.setState({
+            openKeys: event.key,
+        });
+    }
+
+    componentDidMount() {
+        const { history } = this.state;
+        // console.log(history);
+        // 處理刷新時menu UI
+        this.setState({
+            openKeys: history.location.pathname.split('/')[1],
+            selectedKeys: history.location.pathname
+        });
+
+        history.listen(location => {
+            // 監聽直接按瀏覽器上一頁下一頁事件處理menu UI
+            // console.log(location.pathname);
+            const { pathname } = location;
+            if (pathname) {
+                this.setState({
+                    openKeys: pathname.split('/')[1],
+                    selectedKeys: pathname
+                });
+            }
+        })
     }
 
     render() {
@@ -44,59 +81,76 @@ export default class App extends Component {
                 <Content>
                     <Layout className="site-layout-background">
                         <Sider collapsible={true} collapsedWidth={0} breakpoint="lg">
-                            {/* <Menu className="le-menu" mode="inline" selectedKeys={[this.state?.menuHighlight]} onClick={(event) => this.menuItemClick(event)}> */}
                             <Menu
                                 className="le-menu" mode="inline"
-                                selectedKeys={[window.location.pathname]}
+                                // defaultOpenKeys={[window.location.pathname.split('/')[1]]}
+                                // defaultSelectedKeys={[window.location.pathname]}
+                                openKeys={[this.state.openKeys]}
+                                selectedKeys={[this.state.selectedKeys]}
                                 onClick={(event) => this.menuItemClick(event)}
                             >
-                                {/* <Menu className="le-menu" mode="inline"> */}
-                                <SubMenu key="sub1" icon={<BookOutlined />} title="小事管理">
-                                    <Menu.Item key="/random-essay">
+                                <SubMenu
+                                    key="essay-manage"
+                                    icon={<BookOutlined />}
+                                    title="小事管理"
+                                    onTitleClick={(event) => { this.subMenuItemClick(event) }}
+                                >
+                                    <Menu.Item key="/essay-manage/random-essay">
                                         <span>小事卡片</span>
-                                        <Link to="/random-essay" />
+                                        <NavLink to="/essay-manage/random-essay" />
                                     </Menu.Item>
-                                    <Menu.Item key="/essay-list">
+                                    <Menu.Item key="/essay-manage/essay-list">
                                         <span>小事列表</span>
-                                        <Link to="/essay-list" />
+                                        <NavLink to="/essay-manage/essay-list" />
                                     </Menu.Item>
-                                    <Menu.Item key="/essay-calendar">
+                                    <Menu.Item key="/essay-manage/essay-calendar">
                                         <span>小事日曆</span>
-                                        <Link to="/essay-calendar" />
+                                        <NavLink to="/essay-manage/essay-calendar" />
                                     </Menu.Item>
-                                    <Menu.Item key="/create-esssay">
+                                    <Menu.Item key="/essay-manage/create-esssay">
                                         <span>新增小事</span>
-                                        <Link to="/create-esssay" />
+                                        <NavLink to="/essay-manage/create-esssay" />
                                     </Menu.Item>
                                 </SubMenu>
-                                <SubMenu key="sub2" icon={<AreaChartOutlined />} title="統計分析">
-                                    <Menu.Item key="/statistics-analysis">
+                                <SubMenu
+                                    key="essay-statistics"
+                                    icon={<AreaChartOutlined />}
+                                    title="統計分析"
+                                    onTitleClick={(event) => { this.subMenuItemClick(event) }}
+                                >
+                                    <Menu.Item key="/essay-statistics/statistics-analysis">
                                         <span>小事統計</span>
-                                        <Link to="/statistics-analysis" />
+                                        <NavLink to="/essay-statistics/statistics-analysis" />
                                     </Menu.Item>
                                 </SubMenu>
-                                <SubMenu key="sub3" icon={<MailOutlined />} title="關於專案">
-                                    <Menu.Item key="/technical-resources">
+                                <SubMenu
+                                    key="about-project"
+                                    icon={<MailOutlined />}
+                                    title="關於專案"
+                                    onTitleClick={(event) => { this.subMenuItemClick(event) }}
+                                >
+                                    <Menu.Item key="/about-project/technical-resources">
                                         <span>技術資源</span>
-                                        <Link to="/technical-resources" />
+                                        <NavLink to="/about-project/technical-resources" />
                                     </Menu.Item>
-                                    <Menu.Item key="/contact-developer">
+                                    <Menu.Item key="/about-project/contact-developer">
                                         <span>聯絡開發者</span>
-                                        <Link to="/contact-developer" />
+                                        <NavLink to="/about-project/contact-developer" />
                                     </Menu.Item>
                                 </SubMenu>
                             </Menu>
                         </Sider>
                         <Content className="le-main-content">
-                            <Route exact path="/create-esssay" component={CreateEssay} />
-                            <Route exact path="/essay-list" component={EssayList} />
-                            <Route exact path="/essay-calendar" component={EssayCalendar} />
-                            <Route exact path="/random-essay" component={RandomEssay} />
-                            <Route exact path="/statistics-analysis" component={StatisticsAnalysis} />
-                            <Route exact path="/technical-resources" component={TechnicalResources} />
-                            <Route exact path="/contact-developer" component={ContactDeveloper} />
-                            {/* <Redirect from="/" to="/random-essay" /> */}
-                            {/* <Redirect to="/create-esssay" /> */}
+                            <Switch>
+                                <Route path="/essay-manage/create-esssay" component={CreateEssay} />
+                                <Route path="/essay-manage/essay-list" component={EssayList} />
+                                <Route path="/essay-manage/essay-calendar" component={EssayCalendar} />
+                                <Route path="/essay-manage/random-essay" component={RandomEssay} />
+                                <Route path="/essay-statistics/statistics-analysis" component={StatisticsAnalysis} />
+                                <Route path="/about-project/technical-resources" component={TechnicalResources} />
+                                <Route path="/about-project/contact-developer" component={ContactDeveloper} />
+                                <Redirect to="/essay-manage/random-essay" />
+                            </Switch>
                         </Content>
                     </Layout>
                 </Content>
