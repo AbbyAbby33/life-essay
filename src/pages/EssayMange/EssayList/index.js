@@ -71,8 +71,6 @@ export default class EssayList extends Component {
     }
 
     render() {
-        // console.log('EssayList', this.props);
-
         return (
             <div>
                 <PageHeader

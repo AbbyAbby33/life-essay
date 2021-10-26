@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.less';
 import { BookOutlined, AreaChartOutlined, MailOutlined } from '@ant-design/icons';
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 
 // 頁面
 import CreateEssay from './pages/EssayMange/CreateEssay';
@@ -46,25 +46,35 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        const { history } = this.state;
-        // console.log(history);
-        // 處理刷新時menu UI
-        this.setState({
-            openKeys: history.location.pathname.split('/')[1],
-            selectedKeys: history.location.pathname
-        });
+        // 2021/10/27：改成HashRouter後，要處理第一次刷新時顯示
+        // console.log('2021/10/27----------------------window.location', window.location);
+        const path = window.location.hash;
+        if (path) {
+            this.setState({
+                openKeys: path.split('/')[1],
+                selectedKeys: path.split('#')[1],
+            });
+        } 
 
-        history.listen(location => {
-            // 監聽直接按瀏覽器上一頁下一頁事件處理menu UI
-            // console.log(location.pathname);
-            const { pathname } = location;
-            if (pathname) {
-                this.setState({
-                    openKeys: pathname.split('/')[1],
-                    selectedKeys: pathname
-                });
-            }
-        })
+        // 處理刷新時menu UI
+        const { history } = this.state;
+        console.log('2021/10/26----------------------history', history);
+        // this.setState({
+        //     openKeys: history.location.pathname.split('/')[1],
+        //     selectedKeys: history.location.pathname
+        // });
+   
+        // history.listen(location => {
+        //     // 監聽直接按瀏覽器上一頁下一頁事件處理menu UI
+        //     // console.log(location.pathname);
+        //     const { pathname } = location;
+        //     if (pathname) {
+        //         this.setState({
+        //             openKeys: pathname.split('/')[1],
+        //             selectedKeys: pathname
+        //         });
+        //     }
+        // })
     }
 
     render() {
