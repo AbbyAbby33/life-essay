@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/life-essay/static/css/main.f62ff844.chunk.css",
-    "main.js": "/life-essay/static/js/main.192c4fb4.chunk.js",
-    "main.js.map": "/life-essay/static/js/main.192c4fb4.chunk.js.map",
+    "main.js": "/life-essay/static/js/main.c07c1c8c.chunk.js",
+    "main.js.map": "/life-essay/static/js/main.c07c1c8c.chunk.js.map",
     "runtime-main.js": "/life-essay/static/js/runtime-main.abb90d8f.js",
     "runtime-main.js.map": "/life-essay/static/js/runtime-main.abb90d8f.js.map",
-    "static/js/2.979f1500.chunk.js": "/life-essay/static/js/2.979f1500.chunk.js",
-    "static/js/2.979f1500.chunk.js.map": "/life-essay/static/js/2.979f1500.chunk.js.map",
+    "static/js/2.6308fd5d.chunk.js": "/life-essay/static/js/2.6308fd5d.chunk.js",
+    "static/js/2.6308fd5d.chunk.js.map": "/life-essay/static/js/2.6308fd5d.chunk.js.map",
     "static/js/3.17f207fe.chunk.js": "/life-essay/static/js/3.17f207fe.chunk.js",
     "static/js/3.17f207fe.chunk.js.map": "/life-essay/static/js/3.17f207fe.chunk.js.map",
     "index.html": "/life-essay/index.html",
     "static/css/main.f62ff844.chunk.css.map": "/life-essay/static/css/main.f62ff844.chunk.css.map",
-    "static/js/2.979f1500.chunk.js.LICENSE.txt": "/life-essay/static/js/2.979f1500.chunk.js.LICENSE.txt"
+    "static/js/2.6308fd5d.chunk.js.LICENSE.txt": "/life-essay/static/js/2.6308fd5d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.abb90d8f.js",
-    "static/js/2.979f1500.chunk.js",
+    "static/js/2.6308fd5d.chunk.js",
     "static/css/main.f62ff844.chunk.css",
-    "static/js/main.192c4fb4.chunk.js"
+    "static/js/main.c07c1c8c.chunk.js"
   ]
 }
